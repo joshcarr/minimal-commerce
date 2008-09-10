@@ -1,0 +1,18 @@
+<h1>Minimal Effort</h1>
+<div id="wrapper" class="clear">
+  <div id="main">
+    <h2>Products</h2>
+    <% @products.each do |product| %>
+      <h3><%= product.name %></h3>
+      <p><%= product.description %></p>
+      <div id="price">
+        RRP: $<%= product.price %>&nbsp;
+        <%= link_to "Learn More", :action => 'product', :id => product.id %>
+      </div>
+      <br>
+    <% end %>
+    
+    <br>
+    <%= will_paginate @products %>
+  </div>
+</div>

@@ -1,0 +1,122 @@
+<%= stylesheet_link_tag "style_template", :media => "screen,projection" %>
+<br><br>
+<div id="main">
+  <h2>Payment</h2>
+  <p>Products in your shopping cart:</p>
+  <div class="table">
+    <div id="releaseRow" class="tr">
+      <div class="td">
+        Desc
+      </div>
+      <div class="td">
+        Price
+      </div>
+      <div class="td">
+        Qty Ordered
+      </div>
+      <div class="td">
+        Total
+      </div>
+    </div><br />
+    
+    <div id="list_orders">
+      <%= render :partial => 'orders' %>
+    </div>
+  </div><br/>
+  
+  <div id="customer">
+    <p>
+      <strong><%= @customer.first_name %> <%= @customer.last_name %></strong><br />
+      Tel.: <%= @customer.phone %><br />
+      Email: <%= @customer.email %>
+    </p>
+    <p>
+      Shipping method: <strong><%= @customer.shipping_method %></strong>
+    </p>
+    <p>
+      <strong>Shipping Address:</strong><br />
+      <%= @customer.street_address %>, <%= @customer.city %><br />
+      <%= @customer.state %>, <%= @customer.zip_code %>
+    </p>
+  </div>
+  <br />
+  
+  <h3>Payment Details:</h3>
+  <% if flash[:notice] != nil %>
+    <font color='red'><%= flash[:notice] if flash[:notice] %><% flash[:notice] = nil %><br></font>
+    <br>
+  <% end %>
+  <div id="customer">
+  <form method="post">
+    <p>
+    <label for="credit_card">Credit Card:
+    <select name="billing[credit_card]">
+      <option <%= 'selected' if @billing[:credit_card] == 'bogus' %> value="bogus">Bogus</option>
+      <option <%= 'selected' if @billing[:credit_card] == 'visa' %> value="visa">Visa</option>
+      <option <%= 'selected' if @billing[:credit_card] == 'master' %> value="master">Mastercard</option>
+      <option <%= 'selected' if @billing[:credit_card] == 'discover' %> value="discover">Discover</option>
+    </select>
+    </label>
+
+    <label>&nbsp;&nbsp;&nbsp;Card Number:
+    <input name="billing[card_number]" value="<%= @billing[:card_number] if @billing[:card_number] %>" id="card_number" type="text" size="30" maxlength="24" />
+    </label>
+    </p>
+
+    <p>
+    <label for="expiration_month">Exp. Month:
+    <select name="billing[expiration_month]">
+      <option value="1" <%= 'selected' if @billing[:expiration_month] == '1' %>>January</option>
+      <option value="2" <%= 'selected' if @billing[:expiration_month] == '2' %>>February</option>
+      <option value="3" <%= 'selected' if @billing[:expiration_month] == '3' %>>March</option>
+      <option value="4" <%= 'selected' if @billing[:expiration_month] == '4' %>>April</option>
+      <option value="5" <%= 'selected' if @billing[:expiration_month] == '5' %>>May</option>
+      <option value="6" <%= 'selected' if @billing[:expiration_month] == '6' %>>June</option>
+      <option value="7" <%= 'selected' if @billing[:expiration_month] == '7' %>>July</option>
+      <option value="8" <%= 'selected' if @billing[:expiration_month] == '8' %>>August</option>
+      <option value="9" <%= 'selected' if @billing[:expiration_month] == '9' %>>September</option>
+      <option value="10" <%= 'selected' if @billing[:expiration_month] == '10' %>>October</option>
+      <option value="11" <%= 'selected' if @billing[:expiration_month] == '11' %>>November</option>
+      <option value="12" <%= 'selected' if @billing[:expiration_month] == '12' %>>December</option>
+    </select>
+    </label>
+
+    <label for="expiration_year">Exp. Month:
+    <select name="billing[expiration_year]">
+      <% for year in 2008..2018 do %>
+        <option value="<%= year %>" <%= 'selected' if @billing[:expiration_year] == year.to_s %> ><%= year %></option>
+      <% end %>
+    </select>
+    </label>
+
+    <label for="card_verification_number">&nbsp;&nbsp;&nbsp;CVN:
+      <input name="billing[card_verification_number]" value="<%= @billing[:card_verification_number] if @billing[:card_verification_number] %>" id="card_verification_number" type="text" size="4" maxlength="4" />
+    </label>
+    </p>
+    </fieldset>
+    
+    <p>
+    <input name="cancel" type="button" value="Back" onclick="do_post(0)" />
+    <input name="continue" type="button" value="Continue" onclick="do_post(1)" />
+  </form>
+  </div>
+  
+</div>
+<div id="side">
+  <img src="/images/cards.png" alt="cards icon" />
+</div>
+<script language="JavaScript">
+  function do_post(val) {
+    switch (val) {
+      case 0: // cancel
+        document.forms[0].action = "shipping";
+        document.forms[0].submit();
+      break;
+      case 1: // continue
+        document.forms[0].action = "do_billing";
+        document.forms[0].submit();
+      break;
+    }
+    return;
+  }
+</script>

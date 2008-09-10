@@ -1,0 +1,100 @@
+<%= stylesheet_link_tag "style_template", :media => "screen,projection" %>
+<br><br>
+<div id="main">
+  <h2>Payment</h2>
+  <p>Products in your shopping cart:</p>
+  <div class="table">
+    <div id="releaseRow" class="tr">
+      <div class="td">
+        Desc
+      </div>
+      <div class="td">
+        Price
+      </div>
+      <div class="td">
+        Qty Ordered
+      </div>
+      <div class="td">
+        Total
+      </div>
+    </div><br />
+    
+    <div id="list_orders">
+      <%= render :partial => 'orders' %>
+    </div>
+  </div><br/>
+  
+  <div id="customer">
+    <p>
+      <strong><%= @customer.first_name %> <%= @customer.last_name %></strong><br />
+      Tel.: <%= @customer.phone %><br />
+      Email: <%= @customer.email %>
+    </p>
+    <p>
+      Shipping method: <strong><%= @customer.shipping_method %></strong>
+    </p>
+    <p>
+      <strong>Shipping Address:</strong><br />
+      <%= @customer.street_address %>, <%= @customer.city %><br />
+      <%= @customer.state %>, <%= @customer.zip_code %>
+    </p>
+  </div>
+  <br />
+  
+  <% if flash[:notice] != nil %>
+    <font color='red'><%= flash[:notice] if flash[:notice] %><% flash[:notice] = nil %><br></font>
+    <br>
+  <% end %>
+  <div id="customer">
+    <p>
+    <label for="credit_card">Credit Card: <b><%= @billing.card_type %></b>
+    </label>
+
+    <label>&nbsp;&nbsp;&nbsp;Card Number: <b><%= @billing.card_number %></b>
+    </label>
+    </p>
+
+    <p>
+    <label for="expiration_month">Exp. Month: <b><%= @billing.expiration_month %></b>
+    </label>
+
+    <label for="expiration_year">&nbsp;&nbsp;Exp. Month: <b><%= @billing.expiration_year %></b>
+    </select>
+    </label>
+
+    <label for="card_verification_number">&nbsp;&nbsp;&nbsp;CVN: <b>****</b>
+    </label>
+    </p>
+    </fieldset>
+    
+    
+  </div>
+  
+  
+  <form method="post">
+    <p>
+    <input name="cancel" type="button" value="Back" onclick="do_post(0)" />
+    <input name="continue" type="button" value="Checkout" onclick="do_post(1)" />
+  </form>
+</div>
+<div id="side">
+  <img src="/images/cards.png" alt="cards icon" />
+</div>
+
+
+
+<script language="JavaScript">
+  function do_post(val) {
+    switch (val) {
+      case 0: // cancel
+        document.forms[0].action = "billing";
+        document.forms[0].submit();
+      break;
+      case 1: // continue
+        document.forms[0].action = "do_checkout";
+        document.forms[0].submit();
+      break;
+    }
+    return;
+  }
+</script>

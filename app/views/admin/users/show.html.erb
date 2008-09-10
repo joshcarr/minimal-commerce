@@ -1,0 +1,7 @@
+<h2>User detail</h2>
+<p>
+  User name: <strong><%= @user.login %></strong><br />
+  Email: <strong><%= @user.email %></strong>
+</p>
+<%= link_to 'Edit', :controller => 'admin/users', :action => :edit, :id => @user %> |
+<%= link_to 'Back', :controller => 'admin/users', :action => :index %>

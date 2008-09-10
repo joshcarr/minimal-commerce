@@ -1,0 +1,7 @@
+<h2>Editing a user</h2>
+<% form_for :user, :url => { :controller => 'admin/users', :action => 'update', :id => @user} do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+<%= link_to 'Show', :controller => 'admin/users', :action => :show, :id => @user %> |
+<%= link_to 'Back', :controller => 'admin/users', :action => :index %>

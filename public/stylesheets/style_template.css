@@ -1,0 +1,321 @@
+/** Minimal Commerce Website **/
+
+body {
+	color: #666;
+	font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+	font-size: 12px;
+	background: #D2CAB9 url(../images/background.png) repeat-x 0 0;
+	line-height: 18px;	
+	text-align: center;
+}
+
+.clear {
+	display: inline-block;
+} 
+* html .clear {
+	height: 1%;
+}
+
+
+h1,h2,h3,h4,h5,h6,strong {
+	/*headers and strong elements now bolder*/
+	color: #000;
+	font-weight:bold; 
+}
+
+h1 {
+	background:#E0F0FA url(/images/header_bg.png) no-repeat;	
+	background-position: 0px;
+	border-bottom: 1px solid #eee;
+	height: 260px;
+	margin: 0;
+	padding-top: 40px;
+	position: relative;
+	text-indent: -9999px;	
+}
+
+
+* html .column { overflow-x: hidden; } /* IE6 fix */
+
+/* @group Links */
+a {
+	/* get rid of link outlines in firefox */
+	outline-color:invert;
+	outline-style:none;
+	outline-width:medium;
+}
+
+a:link {
+	color: #a08f6a;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #a08f6a;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #38290b;
+	text-decoration: underline;
+}
+
+a:active {
+	color: #38290b;
+	text-decoration: underline;
+}
+/* @end */
+
+#container {
+	margin: 0 auto;
+	text-align: left;
+	width: 960px;
+}
+
+#header {
+	height: 99px;
+	position: relative;
+	width: 960px;
+}
+
+#logo {
+	background-image: url(../images/logo_custom.png);
+	background-repeat: no-repeat;
+	position: relative;
+	top: 35px;
+	display: block;
+	height: 45px;
+	width: 400px;
+	text-indent: -99999px;
+}
+
+#body {
+	width: 964px;	
+}
+
+
+/* @group Navigation */
+
+#navigation ul {
+	bottom: 15px;
+	right: 0px;
+	float: right;
+	width: 400px;
+}
+
+#navigation li {
+	display: inline;
+}
+
+#navigation li a {
+	float: right;
+	margin: 0 26px 0 0;
+	text-align: right;
+}
+
+/* @end */
+
+#sub_top {
+	background: url(../images/sub_top.png) no-repeat;
+	height: 5px;
+	width: 964px;
+}
+
+#sub_body {
+	background: url(../images/sub_bg.png) repeat-y;
+	padding: 0 2px;
+	width: 960px;
+}
+
+#wrapper {
+	padding: 40px 0 20px 0;
+}
+
+#side {
+	float: right;
+	margin: 0 50px 0 50px;
+	width: 300px;
+	display: inline;
+	vertical-align:text-bottom;
+}
+
+div.prologue {
+	background: #fff;
+	border: 1px solid #d7d7d7;
+	color: #666;
+	padding: 10px;	
+}
+
+div.prologue h2 {
+	margin: 0 0 18px;
+	font-size: 20px;
+	color: #222222;
+	line-height: 25px;
+}
+
+div.prologue h4 {
+	color: #0e2449;
+	font-size: 14px;
+	margin-bottom: 18px;
+}
+
+div.prologue p {
+	font-size: 11px;
+}
+
+p.welcome {
+	font-size: 18px;
+	line-height: 24px;
+}
+
+#sub_bottom {
+	background: url(../images/sub_bottom.png) no-repeat;
+	height: 8px;
+	width: 964px;
+}
+
+
+
+/*@group Tables */
+
+.product {
+	font-weight: bold;
+	font-size: 14px;
+	color: #900d0c;
+}
+
+.table {
+	width: 100%;
+	border: 1px solid #eee;
+}
+
+.table .th {
+	background-color: #eee;
+	color: #fff;
+	font-weight: bold;
+	border-bottom: 1px dotted #eee;
+}
+
+.table .tr:nth-child(odd) {
+	background-color: #eee;
+}
+
+.table .td {
+	float: left;
+	padding-right: 10px;
+	width: 100px;
+	padding-left: 2%;
+}
+
+.table #image {
+	width: 100px;
+}
+
+/*@end */
+
+
+#main {
+	float: left;
+	margin: 0 0 0 50px;
+	width: 510px;
+	display: inline; /* ie6 fix*/
+}
+
+#main h2 {
+	font-size: 24px;
+	font-weight: normal;
+	line-height: 24px;
+	margin: 0 0 3px;
+	padding: 0 0 24px;
+}
+
+#main h3 {
+	margin-top: 0;
+}
+
+#main h4 {
+	font-size: 14px;
+	margin-top: 36px;
+}
+
+.payment {
+	background: url(../images/cards_bg.png) 	no-repeat;	
+	background-position: 0px;
+	border-bottom: 1px solid #eee;
+	height: 260px;
+	margin: 0;
+	padding-top: 40px;
+	position: relative;
+	text-indent: -9999px;
+}
+
+#page_bottom {
+	border-top: 1px solid #eee;
+	color: #888;
+	font-size: 9px;
+	margin: 50px 0 0 0;
+	padding: 10px 50px 20px;
+}
+
+
+
+#customer {
+	background-color: #ddd;
+	padding-left: 15px;
+	border: solid 1px #9a9a9a;
+}
+
+#footer {
+	color: #38290b;
+	font-size: 11px;
+	height: 100px;
+	padding: 18px;
+	text-align: center;
+}
+
+# will_paginate
+.pagination {
+  padding: 3px;
+  margin: 3px;
+}
+.pagination a {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #aaaadd;
+  text-decoration: none;
+  color: #000099;
+}
+.pagination a:hover, .pagination a:active {
+  border: 1px solid #000099;
+  color: #000;
+}
+.pagination span.current {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #000099;
+  font-weight: bold;
+  background-color: #000099;
+  color: #FFF;
+}
+.pagination span.disabled {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #eee;
+  color: #ddd;
+}
+
+.input_quantity{
+  color            : #000000;
+  background-color : #F0F0F0;
+  border           : 1px solid #000000;
+  font-weight: bold;
+}
+
+div#shipping_address{
+  margin-left:0px;
+}
+div#checkout{
+  text-align:right;
+  margin-right: 35px;
+  font-weight: bold;
+}

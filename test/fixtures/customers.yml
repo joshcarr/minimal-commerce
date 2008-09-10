@@ -1,0 +1,20 @@
+--- 
+customers_01: 
+  city: HoChiMinh
+  postcode: 0084
+  zip_code: 
+  update_date: 0000-00-00 00:00:00
+  country: Vietnam
+  gender: "0"
+  id: "1"
+  street_address: 
+  create_date: 0000-00-00 00:00:00
+  shipping_method: 
+  fax: ""
+  phone: 0904934428
+  first_name: Nguyen
+  address: Dang Log
+  password: "123"
+  last_name: Khanh
+  email: ntkhanh311@gmail.com
+  state: ""

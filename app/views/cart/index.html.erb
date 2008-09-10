@@ -1,0 +1,40 @@
+<%= stylesheet_link_tag "style_template", :media => "screen,projection" %>
+<br><br>
+<div id="main">
+  <h2>Cart</h2>
+  <p>Products in your shopping cart:</p>
+    <div class="table">
+      <div id="releaseRow" class="tr">
+        <div class="td">
+          Desc
+        </div>
+        <div class="td">
+          Price
+        </div>
+        <div class="td">
+          Qty Ordered
+        </div>
+        <div class="td">
+          Total
+        </div>
+      </div><br />
+      
+      <div id="list_orders">
+        <%= render :partial => 'list_orders' %>
+      </div>
+      
+    </div><br/>
+</div>
+
+<div id="side">
+  <!--div class="prologue">
+    <h2>Details</h2>
+      
+    <p><strong>Vendor:</strong> Rowan's Electrical</p>
+    <p><strong>Availability:</strong> 10 pcs</p>
+    <p><strong>Amount ordered:</strong> 1</p>
+    <p><strong>Customer:</strong> Mr. J. Appleseed</p>
+    <p><strong>Delivery Details:</strong> 256, Cupertino Ave, 98040 - CA</p><hr />
+    <p><strong><a href="payment.html">Proceed to Checkout</a></strong></p>
+  </div-->
+</div>

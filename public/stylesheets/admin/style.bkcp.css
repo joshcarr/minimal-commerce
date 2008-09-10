@@ -1,0 +1,299 @@
+/** Minimal Commerce Website **/
+
+body {
+	color: #333;
+	font: 1.1em/1.1em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	font-size: 12px;
+	background: #D2CAB9 url(../images/top_bar.png) repeat-x 0 0;
+	line-height: 18px;	
+	text-align: center;
+}
+
+.clear {
+	display: inline-block;
+} 
+* html .clear {
+	height: 1%;
+}
+
+h1,h2,h3,h4,h5,h6,strong {
+	/* headers and strong elements now bolder */
+	color: #4c4c4c;
+	font-weight:bold;
+}
+
+* html .column { overflow-x: hidden; } /* IE6 fix */
+
+/* @group Links */
+a {
+	/* get rid of link outlines in firefox */
+	outline-color:invert;
+	outline-style:none;
+	outline-width:medium;
+}
+
+a:link {
+	
+	text-decoration: none;
+}
+
+a:visited {
+	
+	text-decoration: none;
+}
+
+a:hover {
+	
+	text-decoration: underline;
+}
+
+/* @end */
+
+/*** Search Components ***/
+
+#search {
+  float: left;
+  width: 100%;
+  height: 40px;
+  padding-top: 10px;
+}
+
+#search input {
+	color: #999;
+	font-size: 9pt;
+}
+
+/*** End Search Components ***/
+
+#container {
+	margin: 0 auto;
+	text-align: left;
+	width: 960px;
+}
+
+#header {
+	height: 58px;
+	position: relative;
+	width: 100%;
+}
+
+#logo {
+	background-image: url(../images/logo.png);
+	background-repeat: no-repeat;
+	position: relative;
+	margin-top: -3px;
+	width: 200px;
+	text-indent: -99999px;
+}
+
+/* @group Navigation */
+
+#navigation ul {
+	margin-top: -30px;
+	float: right;
+	width: 300px;
+	color: white;
+	text-shadow: 0.1em 0.1em black;
+	
+}
+
+#navigation li {
+	color: #fff;
+	display: inline;
+}
+
+#navigation li.active {
+	font-weight: bold;
+}
+
+#navigation li a {
+	color: #fff;
+	float: right;  
+	margin: 0 25px 0 0;
+	text-align: right;
+}
+
+/* @end */
+
+/* @group Sub_Navigation */
+
+
+
+#sub_navigation ul {
+	padding-top: 10px;
+	margin: -5px;
+}
+
+#sub_navigation li {
+	display: inline;
+	padding-bottom: 10px;
+	margin: 3px;
+}
+
+#sub_navigation li a {
+	color: #1a496b;
+	text-decoration: none;
+	padding: 10px;
+}
+
+#sub_navigation li.active {
+	background-color: #fff;
+	font-weight: bold;
+	color: #000;
+}
+
+#sub_navigation li.home {
+	margin: 5px;
+}
+
+/* @end */
+
+#sub_body {
+	background: url(../images/sub_bg.png) repeat-y;
+	padding: 0 2px;
+	width: 960px;
+}
+
+#side {
+	float: right;
+	width: 300px;
+}
+
+#sub_bottom {
+	background: url(../images/sub_bottom.png) no-repeat;
+	height: 8px;
+	width: 964px;
+}
+
+#main {
+	float: left;
+	margin: 20px 0 0 50px;
+	width: 510px;
+	display: inline; /* ie6 fix */
+}
+
+#main h2 {
+	font-size: 24px;
+	font-weight: normal;
+	text-align: center;
+}
+
+#main h4 {
+	font-size: 14px;
+	margin-top: 36px;
+}
+
+/*@group Sorting */
+
+#sorting p {
+	color: #1a496b;
+	font-weight: bold;
+}
+
+#sorting hr {
+	border:0;
+  	border-top: 1px solid #bcddef;
+  	height: 0;
+  	background: #1f4554;
+  	margin-top: -10px;
+}
+
+#sorting .p-sorting{
+	font-weight: normal;
+	font-size: 11px ;
+	color: #4c4c4c;
+}
+#sorting .p-sorting a {
+	color: red;
+		
+}
+#sorting .p-sorting a:hover {
+	text-decoration: underline;	
+}
+
+#sorting #radio-select {
+	font-size: 11px;
+}
+
+/*@end*/
+
+/*@group Tables */
+
+.product {
+	font-weight: bold;
+	font-size: 14px;
+	color: #900d0c;
+}
+
+
+
+.table #image {
+	width: 100px;
+}
+
+/*@end */
+
+/* Round style */
+#page_bottom {
+	background-color: #fff;
+	border-top: 1px solid #eee;
+	color: #888;
+	font-size: 9px;
+	margin: 0 0 0 0;
+	padding: 10px 50px 20px;
+}
+
+#footer {
+	color: #38290b;
+	font-size: 11px;
+	height: 100px;
+	padding: 18px;
+	text-align: center;
+}
+
+
+/* Single Product View */
+
+#releases p {
+	color: #1a496b;
+	font-weight: bold;
+}
+
+#releases .notSoWide {
+ font-family: Tahoma, Arial;
+ font-size: 1em;
+ padding: 5px;
+ background-color: #fff;
+ border-right: 1px solid #ddd;
+ border-bottom: 1px solid #ddd;
+ width: 100%;
+ margin-bottom: 25px;
+}
+
+#releases .table {
+ width: 100%;
+ border: 1px solid #eee;
+}
+#releases .table .th {
+ background-color: #eee;
+ color: #434343;
+ font-weight: bold;
+ border-bottom: 1px dotted #eee;
+}
+#releases .table .tr:nth-child(odd) {
+ background-color: #eee;
+}
+
+#releases .table .td {
+ float: left;
+ width: 23%;
+ padding-left: 1%;
+}
+
+#releaseRow {
+	font-weight: normal;
+	color: #4c7f98;
+}
+
+
+

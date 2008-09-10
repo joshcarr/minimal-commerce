@@ -1,0 +1,19 @@
+--- 
+orders_01: 
+  status: "0"
+  quantity: "1"
+  product_id: "1"
+  id: "1"
+  transaction_id: "0"
+  customer_id: "1"
+  shipping_address: Campodia
+  shipping_method: PLAN
+orders_02: 
+  status: "2"
+  quantity: "5"
+  product_id: "2"
+  id: "2"
+  transaction_id: "0"
+  customer_id: "1"
+  shipping_address: Tran Khanh Du, Vietnam
+  shipping_method: EMS

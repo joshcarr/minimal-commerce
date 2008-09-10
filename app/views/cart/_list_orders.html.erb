@@ -1,0 +1,60 @@
+<% @orders.each do |order|%>
+  <div class="tr">
+    <div id="desc" class="td">
+      <strong><%= link_to order.product.name, :controller => 'store', :action => 'product', :id => order.product.id %></strong><br />
+      <small>SKU: <%= order.product.sku %></small>
+    </div>
+    <div class="td">
+      <strong>$<%= order.product.price %></strong>
+    </div>
+    <div id="qty" class="td">
+      <!--strong><%= order.quantity %></strong-->
+      <% form_remote_tag :url => url_for(:action => "change_quantity") do %>
+        <%= hidden_field_tag 'id', order.product.id %>
+        <%= text_field_tag 'qty', order.quantity, :maxlength => 3, :size => 2, :class => 'input_quantity' %>
+      <% end %>
+    </div>
+    <div class="td" id="total_<%= order.product.id %>">
+      <strong>$<%= order.calc_price %></strong>
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+<% end %>
+
+<div class="tr">
+  <div id="desc" class="td">&nbsp;
+  </div>
+  <div class="td">&nbsp;
+  </div>
+  <div id="qty" class="td">&nbsp;
+  </div>
+  <div class="td">
+    <strong>$<u><%= @cart.price > 0.00001 ? @cart.price : '0.00' %></u></strong>
+  </div>
+  <div style="clear: both;"></div>
+</div>
+
+<% if @orders.length > 0 %>
+<br>
+<!--form method="post">
+<input name="keep_shopping" type="button" value="Keep Shopping" onclick="do_post(1)" />
+<input name="secure_checkout" type="button" value="Secure Checkout" onclick="do_post(2)" />
+</form-->
+<div id="checkout"><%= link_to 'Proceed to Checkout', :action => 'shipping' %></div>
+<% end %>
+
+<script language="JavaScript">
+function do_post(val) {
+  switch (val) {
+    case 1: // keep shopping
+      document.forms[0].action = "/store/index";
+      document.forms[0].submit();
+    break;
+    case 2: // check out
+      document.forms[0].action = "/cart/shipping";
+      document.forms[0].submit();
+    break;
+  }
+  return;
+}
+</script>

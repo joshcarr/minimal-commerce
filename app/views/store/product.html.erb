@@ -1,0 +1,32 @@
+<%= stylesheet_link_tag "style_template", :media => "screen,projection" %>
+<br><br>
+<div id="main">
+  <h2><%= @product.name %></h2>
+  <p><%= @product.description %></p>
+</div>
+
+<div id="side">
+  <div class="prologue">
+    <h2><%= @product.type.name %></h2>
+      <%= @product.image_upload %>.
+      <% if @product.image_upload != nil %>
+        <%= image_tag @product.image_upload.public_filename(:large) %>
+      <% else %>
+        <%= image_tag '/files/products/blank.png' %>
+      <% end %>
+    <p><strong>Vendor:</strong> Rowan's Electrical</p>
+    <p><strong>Availability:</strong> <%= @product.quantity %></p>
+    <% if @product.quantity > 0 %>
+      <p><strong>Amount:</strong>
+      <% form_tag :controller => 'cart', :action => 'add_2_cart' do %>
+        <%= hidden_field_tag 'id', @product.id %>
+        <select name="txtAmount" id="txtAmount" size="1">
+          <% for i in 1..@product.quantity %>
+            <option value="<%= i %>"><%= i %></option>
+          <% end %>
+          </select> x $<%= @product.price %> </p>
+        <%= submit_tag "Add to Cart", :disable => false, :disable_with => "Please wait..." %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

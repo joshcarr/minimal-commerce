@@ -1,0 +1,22 @@
+--- 
+one: 
+  salt: 9d3a609e434b5936fc3daa496e04828fdf391d4c
+  updated_at: 2008-07-14 14:40:20
+  crypted_password: 08e8560060c6302e6f77bbdc69d93ead860b2015
+  remember_token_expires_at: 
+  id: "1"
+  remember_token: 
+  login: user_one
+  created_at: 2008-07-14 14:40:20
+  email: userone@gmail.com
+
+two: 
+  salt: cb6cf90df31260c650337c695734762ee194bc46
+  updated_at: 2008-07-14 14:40:55
+  crypted_password: a05fbae03215bcae62012969109e080970899279
+  remember_token_expires_at: 
+  id: "2"
+  remember_token: 
+  login: user_two
+  created_at: 2008-07-14 14:40:55
+  email: usertwo@gmail.com

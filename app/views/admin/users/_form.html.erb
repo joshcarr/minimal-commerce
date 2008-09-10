@@ -1,0 +1,60 @@
+<div id="login">
+  <div id="cap-top"></div>
+  <div id="cap-body">
+    <div id="panelLogin">
+    <table align="center" border=0>
+    <tr>
+      <td colspan=2>
+        <%= error_messages_for :user %>
+      </td>
+    </tr>
+    <% if 'new' == controller.action_name %>
+    <tr>
+      <td>
+        <label>Username</label>
+      </td>
+      <td>
+        <%= f.text_field :login, :class => 'textbox300' %>
+      </td>
+    </tr>
+    <% end %>
+    <tr>
+      <td>
+        <label>Email</label>
+      </td>
+      <td>
+        <%= f.text_field :email, :class => 'textbox300' %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Password</label>
+      </td>
+      <td>
+        <%= f.password_field :password, :class => 'textbox300' %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Confirm Password</label>
+      </td>
+      <td>
+        <%= f.password_field :password_confirmation, :class => 'textbox300' %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><br/>
+        <% if 'new' == controller.action_name %>
+          <%= f.submit "Create" %>
+        <% elsif 'edit' == controller.action_name || 'update' == controller.action_name %>
+          <%= f.submit "Update" %>
+        <% end %>
+      </td>
+
+    </tr>
+    </table>
+    </div>
+    
+  </div>
+</div>

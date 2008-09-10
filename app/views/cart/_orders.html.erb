@@ -1,0 +1,31 @@
+<% @orders.each do |order|%>
+  <div class="tr">
+    <div id="desc" class="td">
+      <strong><%= link_to order.product.name, :controller => 'store', :action => 'product', :id => order.product.id %></strong><br />
+      <small>SKU: <%= order.product.sku %></small>
+    </div>
+    <div class="td">
+      <strong>$<%= order.product.price %></strong>
+    </div>
+    <div id="qty" class="td">
+      <strong><%= order.quantity %></strong>
+    </div>
+    <div class="td" id="total_<%= order.product.id %>">
+      <strong>$<%= order.calc_price %></strong>
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+<% end %>
+
+<div class="tr">
+  <div id="desc" class="td">&nbsp;
+  </div>
+  <div class="td">&nbsp;
+  </div>
+  <div id="qty" class="td">&nbsp;
+  </div>
+  <div class="td">
+    <strong>$<u><%= @cart.price > 0.00001 ? @cart.price : '0.00' %></u></strong>
+  </div>
+  <div style="clear: both;"></div>
+</div>

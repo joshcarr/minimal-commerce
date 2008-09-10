@@ -1,0 +1,38 @@
+<script type="text/javascript">
+  var uptype = "url";
+
+  function setCommand(command) {
+    $("task").value = command;
+  }
+  
+  function doUpdate(){
+
+    if (uptype == 'file') {
+      $("product_image").value       = "";
+    } else {
+      $("image_uploaded_data").value = "";
+    }
+
+    return true;
+  }
+
+  function doReset(){
+    $("new_type").value            = "";
+    $("new_model").value           = "";
+    $("product_name").value        = "";
+    $("product_description").value = "";
+    $("product_image").value       = "";
+  }
+
+</script>
+<% form_for :product, :url => { :controller => 'admin/product', :action => 'update_product', :id => @product}, :html => { :multipart => true } do |f| %>
+  <h2>Edit a Product</h2>
+  <%= error_messages_for :product %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  <p>
+    <strong>9.</strong>&nbsp;
+    <%= submit_tag 'Save Product', :onclick => "setCommand('update');return doUpdate();" %>
+    &nbsp;&nbsp;
+    <%= submit_tag 'Cancel',       :onclick => "setCommand('cancel');" %>
+  </p>
+<% end %>

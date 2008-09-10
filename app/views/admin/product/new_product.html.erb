@@ -1,0 +1,15 @@
+<script type="text/javascript">
+  
+</script>
+
+<% form_for :product, :url => { :controller => 'admin/product', :action => 'add_product'}, :html => { :multipart => true } do |f| %>
+  <h2>Add a Product</h2>
+
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  <p>
+    <strong>10.</strong>&nbsp;
+    <input type="button" value='Publish Product' onclick='checkValidate();' />
+    <small>&nbsp;or&nbsp;</small>
+    <input type="button" value="Clear Form" onclick="doReset();" />
+  </p>
+<% end %>

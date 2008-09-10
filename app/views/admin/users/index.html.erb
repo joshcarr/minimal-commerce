@@ -1,0 +1,28 @@
+<h1>Listing users</h1>
+
+<div class="table">
+  <div class="tr">
+     <div class="header">Login</div>
+     <div class="header" style="width:290px">Email</div>
+     <div class="header"&nbsp;</div>
+     <div class="header"&nbsp;</div>
+  </div>
+  <div style="clear: both;"></div>
+
+<% for user in @users %>
+  <div class="tr">
+    <div  class="td"><%= link_to user.login, {:action => 'show', :id => user} %></div>
+    <div  class="td" style="width:296px;"><%= user.email %></div>
+    <div  class="td" style="width:45px;">
+      <%= link_to image_tag('/images/edit.png', :class => 'link-image', :alt => 'Update this user'), { :action => 'edit',   :id => user }, :method => :get  %>
+      &nbsp;
+      <%= link_to image_tag('/images/trash.png', :class => 'link-image', :alt => 'Delete this user'),{ :action => 'destroy', :id => user }, :confirm => 'Are you sure to delete this user?', :method => :delete  %>
+    </div>
+  </div>
+  <div style="clear: both;"></div>
+<% end %>
+</div>
+
+<br />
+
+<%= link_to 'New user',  :controller => 'admin/users', :action => :new %>

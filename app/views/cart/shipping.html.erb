@@ -1,0 +1,146 @@
+<%= stylesheet_link_tag "style_template", :media => "screen,projection" %>
+<br><br>
+<div id="main">
+  <h2>Shipping Information</h2>
+  <p>Products in your shopping cart:</p>
+  <div class="table">
+    <div id="releaseRow" class="tr">
+      <div class="td">
+        Desc
+      </div>
+      <div class="td">
+        Price
+      </div>
+      <div class="td">
+        Qty Ordered
+      </div>
+      <div class="td">
+        Total
+      </div>
+    </div><br />
+    
+    <div id="list_orders">
+      <%= render :partial => 'orders' %>
+    </div>
+  </div><br/>
+  <font color='red'><%= flash[:notice] if flash[:notice] %><% flash[:notice] = nil %><br></font>
+  <br>
+  <div id="shipping_address">
+  <form method="post">
+  <table width="461" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th scope="col"></th>
+    </tr>
+    <tr>
+      <td>SHIPPING ADDRESS</td>
+    </tr>
+    <tr>
+      <td>
+        <fieldset>
+        <p>
+          <label for="firstname"><font color="red">*</font> First Name:<br />
+          <input name="shipping[first_name]" id="firstname" type="text" size="50" maxlength="99" value="<%= @shipping[:first_name] if @shipping[:first_name] %>" />
+          </label>
+          </p>
+          
+        <p>
+        <label for="lastname"><font color="red">*</font> Last Name:<br />
+          <input name="shipping[last_name]" id="lastname" type="text" size="50" maxlength="99" value="<%= @shipping[:last_name] if @shipping[:last_name] %>"/>
+          </label>
+          </p>
+        
+        <p>
+        <label for="streetaddress"><font color="red">*</font> Street Address:<br />
+          <input name="shipping[street_address]" id="streetaddress" type="text" size="50" maxlength="99" value="<%= @shipping[:street_address] if @shipping[:street_address] %>"/>
+          </label>
+          </p>
+        
+        <p>
+        <label for="city"><font color="red">*</font> City:<br />
+          <input name="shipping[city]" id="city" type="text" size="50" maxlength="99" value="<%= @shipping[:city] if @shipping[:city] %>" />
+          </label>
+          </p>
+        
+        <p>
+        <label for="state"><font color="red">*</font> State:<br />
+          <input name="shipping[state]" id="state" type="text" size="50" maxlength="99" value="<%= @shipping[:state] if @shipping[:state] %>"/>
+          </label>
+          </p>
+        
+        <p>
+        <label for="zipcode"><font color="red">*</font> Zip Code:<br />
+          <input name="shipping[zip_code]" id="zipcode" type="text" size="50" maxlength="99" value="<%= @shipping[:zip_code] if @shipping[:zip_code] %>" />
+          </label>
+          </p>
+        
+        <p>
+        <label for="phone"><font color="red">*</font> Phone:<br />
+          <input name="shipping[phone]" id="phone" type="text" size="50" maxlength="99" value="<%= @shipping[:phone] if @shipping[:phone] %>" />
+          </label>
+          </p>
+          
+        <p>
+        <label for="email"><font color="red">*</font> Email:<br />
+          <input name="shipping[email]" id="email" type="text" size="50" maxlength="99" value="<%= @shipping[:email] if @shipping[:email] %>" />
+          </label>
+          </p>
+        
+        <p>
+        <label for="country"><font color="red">*</font> Country:<br />
+        <select name="shipping[country]">
+          <% @countries.each do |country| %>
+            <option <%= 'selected' if country.country == @shipping[:country] %> value="<%= country.country %>"><%= country.country %></option>
+          <% end %>
+        </select>
+        </label>
+        </p>
+        </fieldset>
+      </td>
+    </tr>
+    <tr>
+      <td><br>SHIPPING OPTIONS</td>
+    </tr>
+    <tr>
+      <td>
+        <fieldset>
+        <p><font color="red">*</font>
+        <label for="shipping_method">Shipping Method:<br />
+        <select name="shipping[shipping_method]">
+          <option <%= 'selected' if @shipping[:shipping_method] == "USPS PRIORITY MAIL" %> value="USPS PRIORITY MAIL">USPS PRIORITY MAIL</option>
+          <option <%= 'selected' if @shipping[:shipping_method] == "USPS GLOBAL PRIORITY MAIL" %> value="USPS GLOBAL PRIORITY MAIL">USPS GLOBAL PRIORITY MAIL</option>
+          <option <%= 'selected' if @shipping[:shipping_method] == "USPS GLOBAL ECONOMY PARCEL POST" %> value="USPS GLOBAL ECONOMY PARCEL POST">USPS GLOBAL ECONOMY PARCEL POST</option>
+        </select>
+        </label>
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <p>
+  <font color="red">*</font> Indicates required information
+  </p>
+  <input name="cancel" type="button" value="Back" onclick="do_post(0)" />
+  <!--input name="cancel" type="button" value="Reset" onclick="do_post(2)" /-->
+  <input name="continue" type="button" value="Continue" onclick="do_post(1)" />
+  </form>
+  </div>
+</div>
+
+
+<script language="JavaScript">
+  function do_post(val) {
+    switch (val) {
+      case 0: // cancel
+        document.forms[0].action = "index";
+        document.forms[0].submit();
+        break;
+      case 1: // continue
+        document.forms[0].action = "do_shipping";
+        document.forms[0].submit();
+        break;
+      case 2: // continue
+        document.forms[0].reset();
+        break;
+    }
+    return;
+  }
+</script>

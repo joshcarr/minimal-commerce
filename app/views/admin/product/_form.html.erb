@@ -1,0 +1,180 @@
+<script type="text/javascript">
+  var image_type = 'url';
+  
+  function str_trim(str) {
+      var	str = str.replace(/^\s\s*/, "");
+      var   ws = /\s/;
+      var   i = str.length;
+
+      while (ws.test(str.charAt(--i)));
+      
+      return str.slice(0, i + 1);
+  }
+  
+
+  function uploadType(type){
+    uptype = type;
+  } 
+
+  function setCommand(command) {
+    $("task").value = command;
+  }
+  
+  function addType(){
+    if (str_trim($("new_type").value) == "") {
+      $("err_message").innerHTML = "Please enter new type name.";
+    } else {
+      setCommand("add_type");
+     document.forms[0].submit();
+    }
+  }
+  
+  function addModel(){
+    if (str_trim($("new_model").value) == "") {
+     // alert("asdf");
+     //  document.getElementById('textid').innerHTML=""
+      $("err_message").innerHTML = "Please enter new model name.";
+    } else {
+      setCommand("add_model");
+      document.forms[0].submit();
+    }
+  }
+
+  function checkValidate(){
+    
+    if (str_trim($("product_sku").value) == "") {
+      $("err_message").innerHTML = "Please enter product's SKU number.";
+      return false;
+    }
+
+    if (str_trim($("product_name").value) == "") {
+      $("err_message").innerHTML = "Please enter product name.";
+      return false;
+    }
+
+    if ($("product_price").value.indexOf(".") < 0) {
+      $("product_price").value = $("product_price").value + ".00";
+    }
+
+    if (!Validate.Number($("product_price").value, true)) {
+       $("err_message").innerHTML = "The price is not a valid decimal number!";
+       return false;
+    }
+    
+    if (!Validate.Number($("product_weight").value, false)) {
+       $("err_message").innerHTML = "The weight is not a valid integer number!";
+       return false;
+    }
+
+    if (!Validate.Number($("product_quantity").value, false)) {
+       $("err_message").innerHTML = "The quantity is not a valid integer number!";
+       return false;
+    }
+    
+    if ($("product_image").value != "" && !Validate.URL($("product_image").value)) {
+       $("err_message").innerHTML = "The image's location is invalid!";
+       return false;
+    }
+    
+    if (image_type == "url") {
+       $("image_uploaded_data").value = "";
+    } else {
+       $("product_image").value = "";
+    }
+
+    document.forms[0].submit();
+    //return true;
+  }
+
+  function doReset(){
+    $("new_type").value            = "";
+    $("new_model").value           = "";
+    $("product_name").value        = "";
+    $("product_description").value = "";
+    $("product_image").value       = "";
+  }
+
+
+  function toggleElement(show_id, hide_id){
+    image_type = show_id == "my_image_url" ? "url" : "file";
+    document.getElementById(show_id).style.display = "";
+    document.getElementById(hide_id).style.display = "none";
+  }
+
+function enterOnType(e){
+  if(e) e = e;
+  else e = window.event;
+  
+  if(e.which) var keycode = e.which
+  else var keycode = e.keyCode
+  
+  if(keycode == 13) addType();
+}
+
+function enterOnModel(e){
+  if(e) e = e;
+  else e = window.event;
+  
+  if(e.which) var keycode = e.which
+  else var keycode = e.keyCode
+  
+  if(keycode == 13) addModel();
+}
+</script>
+<input type="hidden" id="task" name="task" value="add" />
+<p><%= flash[:notice] %><% flash[:notice] = nil %>
+  <span id="err_message"></span>
+</p>
+<p>
+  <strong>1.</strong>&nbsp;Select a Product-type from the catalog: 
+  <%= select(:product, :type_id, @types.map{|t| [t.name, t.id] }) %> 
+</p>
+<p>
+  <strong>2.</strong>&nbsp;Or simply create a new type: 
+  <!--input type="text" name="some_name" value="" id="some_name" /-->
+  <input type="text" name="new_type" value="" id="new_type"  onkeydown="enterOnType(event)"/>
+  <input type="button" value="Add type" onclick="addType();" />
+</p>
+
+<p>
+  <strong>3.</strong>&nbsp;Select a model: 
+    <%= select(:product, :model_id, @models.map{|t| [t.name, t.id] }) %> 
+</p>
+
+<p>
+  <strong>4.</strong>&nbsp;Or add a new model: 
+     <input type="text" name="new_model" value="" id="new_model" onkeydown="enterOnModel(event)"/>
+     <input type="button" value="Add model" onclick="addModel();" />
+</p>
+<p>
+  <strong>5.</strong>&nbsp;SKU: <%= f.text_field :sku, :size => 10 %>
+</p>
+<p>
+  <strong>6.</strong>&nbsp;Product name: <%= f.text_field :name %>
+  
+</p>
+<p>
+  <strong>7.</strong>&nbsp;Price:    <b>$</b> <%= f.text_field :price, :size => '6' %>
+  &nbsp;&nbsp;&nbsp;&nbsp;Weight: <%= f.text_field :weight, :size => 5 %> <b>(kg)</b>
+  &nbsp;&nbsp;&nbsp;&nbsp;Quantity: <%= f.text_field :quantity, :size => '6' %> <b>(units)</b>
+</p>
+<p>
+  <strong>8.</strong>&nbsp;Product Description: 
+     <%= text_area(:product, :description, :size => "52x10", :class => "area" ) %>
+</p>
+
+<p>
+  <strong>9.</strong>&nbsp;Add an image relative to the product (thumbnails will be automatically generated): <br />
+    <div style="float:left"><small>Type URL/path&nbsp;</small></div>
+    <div id="my_upload_image" style="display:none">
+      <%= file_field :image, :uploaded_data  %>
+      <small>&nbsp;or&nbsp;</small>
+      <input type="button" name="some_name" value="Image URL" onclick="uploadType('url');toggleElement('my_image_url', 'my_upload_image');" />
+    </div>
+    <div id="my_image_url" style="">
+      <%= f.text_field :image %>
+      <small>&nbsp;or&nbsp;</small>
+      <input type="button" name="some_name" value="Upload from disk" onclick="uploadType('file');toggleElement('my_upload_image','my_image_url');" />
+    </div>
+</p>
+<hr />

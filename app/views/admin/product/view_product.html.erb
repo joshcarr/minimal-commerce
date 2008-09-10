@@ -1,0 +1,31 @@
+<h2>View a Product</h2>
+<div class="table">
+  <div class="tr">
+    <div class="td" style="width:350px;">
+      <p><strong>1.</strong>&nbsp;Product type:  <%= @product.type.name %></p>
+      <p><strong>2.</strong>&nbsp;Product model: <%= @product.model.name %></p>
+      <p><strong>3.</strong>&nbsp;SKU: <%= @product.sku %></p>
+      <p><strong>4.</strong>&nbsp;Product name: <%= @product.name %></p>
+      <p><strong>5.</strong>&nbsp;Price: <b>$</b><%= @product.price %></p>
+     <p><strong>6.</strong>&nbsp;Quantity: <%= @product.quantity %></p>
+    </div>
+    <div class="td" style="width:110px;">
+     <br/><%=  image_for(@product) %>
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+
+  <div class="tr">
+    <div class="td" style="width:480px;">
+      <p><strong>7.</strong>&nbsp;Product Description: <%= @product.description %></p>
+    </div>
+     <div style="clear: both;"></div>
+   </div>
+</div>
+<p>
+<%= link_to 'Back', :controller => 'admin/product', :action => :list_products %>
+&nbsp;|&nbsp;
+<%= link_to 'Edit', :controller => 'admin/product', :action => :edit_product, :id => @product %>
+&nbsp;|&nbsp;
+<%= link_to 'Delete',  {:controller => 'admin/product', :action => :delete_product, :id => @product} , :confirm => 'Are you sure to remove this product?' %>
+</p>

@@ -1,0 +1,55 @@
+<br><br>
+<%= stylesheet_link_tag "style_login" %>
+<% form_tag :controller => 'sessions', :action => 'create' do %>
+<div id="login">
+  <div id="cap-top"></div>
+  <div id="cap-body">
+    <div id="panelLogin">
+    <table align="center">
+    <tr>
+      <td colspan=2 align="center"><h3><font color="#666"></font></h3></td>
+    </tr>
+    <% if flash[:notice] != nil %>
+    <tr>
+      <td colspan=2><%= flash[:notice] %><% flash[:notice]=nil %><br><br></td>
+    </tr>
+    <% end %>
+    <tr>
+      <td>
+        <label>Username</label>
+      </td>
+      <td>
+        <input name="login" type="text" class="textbox300" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Password</label>
+      </td>
+      <td>
+        <input name="password" type="password" class="textbox300" />
+      </td>
+    </tr>
+    <!--tr>
+      <td colspan=2><label for="remember_me">Remember me:</label>
+      <%= check_box_tag 'remember_me' %>
+      </td>
+    </tr-->
+    <tr>
+      <td align='center' colspan=2>
+        <br><input type="image" name="btnLogin" id="btnLogin" src="/images/button-login.png" alt="Login" style="border-width:0px;" />
+      </td>
+    <tr>
+    </tr>
+      <td colspan=2>
+        <%= link_to 'Register', :controller => 'users', :action => 'new' %>
+      </td>
+    </tr>
+    </table>
+    </div>
+    <div id="cap-bottom">
+      <img src="/images/cap-bottom.png" alt="" />
+    </div>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,71 @@
+<script type="text/javascript">
+	function markSent(box){
+      new Ajax.Updater('mark_button', '/admin/order/mark/<%= @order.id %>', {asynchronous:1, evalScripts:true});
+	}
+
+</script>
+<h2>
+    Order Details
+</h2><!-- Electronics table -->
+<div class="table">
+    <div id="releaseRow" class="tr">
+        <div class="td">Desc</div>
+        <div class="td">Price</div>
+        <div class="td">Qty Ordered</div>
+        <div class="td">Customer</div>
+    </div><br />
+  
+  <% @order.details.each do |detail| %> 
+    <div class="tr">
+        <div id="desc" class="td">
+            <strong><%= detail.mc_product.name %></strong><br />
+            <small>SKU: <%= detail.mc_product.sku %></small>
+        </div>
+
+        <div id="price" class="td">
+            <strong>$<%= detail.price %> CAD</strong>
+        </div>
+        <div id="qty" class="td">
+            <strong><%= detail.quantity %></strong>
+        </div>
+        <div class="td">
+            <%= @order.mc_customer.fullname %><br />
+            <small><%= @order.mc_customer.email %></small>
+        </div>
+        <div style="clear: both;"></div><br/>
+     </div>
+  <% end %>
+</div>
+<hr />
+<br />
+<p>
+    We have received payment for the purchase: <strong><%= @order.status & 1 > 0 ? 'YES' : 'NOT YET' %> </strong>.
+</p>
+<p>
+
+    <strong><%= @order.details.length %></strong> item(s) to be shipped:
+    <% if @order.status & 2 > 0 %>
+      <strong>Already Sent</strong>
+    <% else %>
+      <span id="mark_button">
+        <input type="button" value="Mark as sent" onclick="markSent(this)" />
+      </span>
+    <% end %>
+</p>
+<div id="customer">
+    <p>
+
+        <strong><%= @order.mc_customer.fullname %></strong><br />
+        Tel.: <%= @order.mc_customer.phone %><br />
+        Email: <%= @order.mc_customer.email %>
+    </p>
+    <p>
+        Shipping method: <strong><%= @order.shipping_method %></strong>
+    </p>
+
+    <p>
+        <strong>Shipping Address:</strong><br />
+        <%= @order.shipping_address %>
+    </p>
+</div>
+<br/>

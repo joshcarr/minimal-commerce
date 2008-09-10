@@ -1,0 +1,29 @@
+--- 
+products_01: 
+  byline: IP-2093
+  name: iPod Nano 8G
+  weight: "0"
+  price: "120.00"
+  update_date: 2008-07-10 09:24:45
+  type_id: "1"
+  quantity: "0"
+  id: "1"
+  create_date: 2008-07-10 09:24:45
+  description: Some description over here
+  sku: IP-2093
+  image: ipod.png
+  model_id: "1"
+products_02: 
+  byline: SK-92839
+  name: iPod From Amazon
+  weight: "0"
+  price: "123.00"
+  update_date: 2008-07-10 09:29:14
+  type_id: "1"
+  quantity: "0"
+  id: "2"
+  create_date: 2008-07-10 09:29:14
+  description: This is an ipod with image captured from Amazon.
+  sku: SK-92839
+  image: http://ecx.images-amazon.com/images/I/21qb6grULjL._SL160_AA115_.jpg
+  model_id: "1"

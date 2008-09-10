@@ -1,0 +1,45 @@
+<!-- Main Content Container -->
+<div id="breadcrumbs">
+  You are in: <%= link_to 'Products', :controller => 'admin/product', :action => :list_products %>
+</div>
+<b><%= flash[:notice] %><% flash[:notice] = nil %></b>
+<h2>Products</h2>
+
+   <% @types.each do |type| %>
+     <% @models.each do |model| %> 
+       <% products = getSampleProducts(type, model) %>
+       <% if products.size > 0 %>
+         <p class="product"><%= model.name %> [<%= type.name %>]</p>
+         <div class="table">
+           <div class="tr">
+              <div class="header">Item</div>
+              <div class="header" style="width:240px">Desc</div>
+              <div class="header">Price</div>
+           </div>
+           <br/>
+         <% products.each do |product| %>
+           <div class="tr">
+              <div  class="td">
+                 <%= link_to image_for(product), { :controller => 'admin/product', :action => :view_product, :id => product } %>
+              </div>
+              <div class="td" style="width:240px">
+                 <strong>
+                   <%= link_to product.name, :controller => 'admin/product', :action => :view_product, :id => product %>
+                 </strong>
+                 <br/>
+                 <small>SKU: <%= product.sku %></small>
+              </div>
+              <div class="td">
+                    <strong>$<%= product.price %></strong>
+              </div>
+              <div style="clear: both;padding-bottom:10px;"></div>
+           </div>
+         <% end %>
+         <br/>
+          </div> <!-- Table -->
+       <% end %>
+     <% end %>
+   <% end %>
+   
+
+<br/>

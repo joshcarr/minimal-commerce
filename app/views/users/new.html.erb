@@ -1,0 +1,64 @@
+<%= stylesheet_link_tag "style_login" %>
+<br><br>
+<% form_for :user, :url => users_path do |f| -%>
+<div id="login">
+  <div id="cap-top"></div>
+  <div id="cap-body">
+    <div id="panelLogin">
+    <table align="center" border=0>
+    <tr>
+      <td colspan=2 align="center"><h3><font color="#666">
+        Register new user</font></h3>
+      </td>
+    </tr>
+    <tr>
+      <td colspan=2>
+        <%= error_messages_for :user %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Username</label>
+      </td>
+      <td>
+        <%= f.text_field :login, :class => 'textbox300' %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Email</label>
+      </td>
+      <td>
+        <%= f.text_field :email, :class => 'textbox300' %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Password</label>
+      </td>
+      <td>
+        <%= f.password_field :password, :class => 'textbox300' %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Confirm Password</label>
+      </td>
+      <td>
+        <%= f.password_field :password_confirmation, :class => 'textbox300' %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan=2 align="center"> 
+        <br>
+        <input type="image" name="btnLogin" id="btnLogin" src="/images/button-register.png" alt="Login" style="border-width:0px;" />
+      </td>
+    </tr>
+    </table>
+    </div>
+    <div id="cap-bottom">
+      <img src="/images/cap-bottom.png" alt="" />
+    </div>
+  </div>
+</div>
+<% end %>

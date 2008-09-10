@@ -1,0 +1,1 @@
+page.replace_html 'list_orders', :partial => 'list_orders'

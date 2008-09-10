@@ -1,0 +1,19 @@
+--- 
+orders_products_01: 
+  order_id: "1"
+  price: "120.00"
+  quantity: "3"
+  product_id: "1"
+  id: "1"
+orders_products_02: 
+  order_id: "2"
+  price: "287.00"
+  quantity: "5"
+  product_id: "2"
+  id: "2"
+orders_products_03: 
+  order_id: "2"
+  price: "124.00"
+  quantity: "2"
+  product_id: "1"
+  id: "3"

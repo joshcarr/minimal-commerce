@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <%= javascript_include_tag :defaults %>
+    <%= stylesheet_link_tag "catalog"%>
+    <title>Minimal Commerce</title>
+  </head>
+  <body>
+    <!-- Main Container -->
+    <div id="container">
+      <!-- Header Container -->
+      <div id="header">
+        <div id="logo">
+          <p>
+            Minimal Commerce.
+          </p>
+        </div>
+        <div id="navigation">
+          <ul>
+            <li>
+              <%= link_to 'Login', :controller => 'sessions', :action => 'new' unless session[:user_id] %>
+              <%= link_to 'Logout', :controller => 'sessions', :action => 'logout' if session[:user_id] %>
+            </li>
+            <li>
+              <a href="#">Search</a>
+            </li>
+            <li>
+              <%= link_to 'Cart', :controller => 'cart' %>
+            </li>
+            <li>
+              <%= link_to 'Catalog', :controller => 'store' %>
+            </li>
+            <li>
+              <%= link_to 'Home', :controller => 'welcome' %>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Main Content Container -->
+      <div id="body">
+        <div id="sub_top"></div>
+        <div id="sub_body">
+          
+          <%= yield %>
+          <%= render :partial => "layouts/instruction" %>
+          
+        </div>
+        <div id="sub_bottom"></div>
+      </div>
+      <!-- Footer Container -->
+      <%= render :partial => "layouts/footer" %>
+    </div>
+  </body>
+</html>

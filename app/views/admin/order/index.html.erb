@@ -1,0 +1,36 @@
+<!-- Main Content Container -->
+<h2>Orders</h2><!-- Electronics table -->
+
+<% @orders.each do |order| %> 
+<div class="table">
+    <div id="releaseRow" class="tr">
+        <div class="td">Desc</div>
+        <div class="td">Price</div>
+        <div class="td">Qty Ordered</div>
+        <div class="td">Customer</div>
+    </div><br />
+
+ <% order.details.each do |detail| %> 
+   
+    <div class="tr">
+          <div id="desc" class="td">
+            <strong><%= detail.mc_product.name %></strong><br />
+            <small>SKU: <%= detail.mc_product.sku %></small>
+        </div>
+        <div id="price" class="td">
+            <strong>$<%= detail.price %> CAD</strong>
+        </div>
+        <div id="qty" class="td">
+            <strong><%= detail.quantity %></strong>
+        </div>
+        <div class="td">
+            <%= link_to order.mc_customer.fullname, :controller => 'admin/order', :action => :detail, :id => order %>
+<br />
+            <small><%= order.mc_customer.email %></small>
+        </div>
+        <div style="clear: both;"></div><br/>
+     </div>
+  <% end %>
+</div><br />
+<% end %>
+<br/><%= will_paginate @orders %>
