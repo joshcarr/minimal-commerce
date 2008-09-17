@@ -2,22 +2,22 @@ class MinimalcommerceStructure < ActiveRecord::Migration
   def self.up
 
     # Table: Customers (Used from Minimal_Cart)
-    #create_table :customers do |t|
-    #  t.column :first_name,  :string, :limit => 32, :null => false
-    #  t.column :last_name,   :string, :limit => 32, :null => false
-    #  t.column :gender,      :integer,:limit => 1,  :null => false
-    #  t.column :password,    :string, :limit => 32
-    #  t.column :address,     :string, :limit => 128, :null => false
-    #  t.column :city,        :string, :limit => 32
-    #  t.column :state,       :string, :limit => 32
-    #  t.column :country,     :string, :limit => 32, :null => false
-    #  t.column :postcode,    :string, :limit => 16
-    #  t.column :email,       :string, :limit => 32, :null => false
-    #  t.column :phone,       :string, :limit => 16    
-    #  t.column :fax,         :string, :limit => 16
-    #  t.column :create_date, :datetime, :null => false, :default => Time.now
-    #  t.column :update_date, :datetime, :null => false, :default => Time.now
-    #end
+    create_table :customers do |t|
+      t.column :first_name,  :string, :limit => 32, :null => false
+      t.column :last_name,   :string, :limit => 32, :null => false
+      t.column :gender,      :integer,:limit => 1,  :null => false
+      t.column :password,    :string, :limit => 32
+      t.column :address,     :string, :limit => 128, :null => false
+      t.column :city,        :string, :limit => 32
+      t.column :state,       :string, :limit => 32
+      t.column :country,     :string, :limit => 32, :null => false
+      t.column :postcode,    :string, :limit => 16
+      t.column :email,       :string, :limit => 32, :null => false
+      t.column :phone,       :string, :limit => 16    
+      t.column :fax,         :string, :limit => 16
+      t.column :create_date, :datetime, :null => false, :default => Time.now
+      t.column :update_date, :datetime, :null => false, :default => Time.now
+    end
     
     # Table: Product Model
     create_table :models do |t|
@@ -60,7 +60,7 @@ class MinimalcommerceStructure < ActiveRecord::Migration
     end
     
     # Foreign Key constrains for order table
-    #execute "alter table orders add constraint fk_order_customer  foreign key (customer_id)  REFERENCES customers(id)"
+    execute "alter table orders add constraint fk_order_customer  foreign key (customer_id)  REFERENCES customers(id)"
 
     # Table: Ordered Product
     create_table :orders_products do |t|
@@ -95,7 +95,7 @@ class MinimalcommerceStructure < ActiveRecord::Migration
     drop_table :orders_products
     drop_table :orders
     drop_table :products
-    #drop_table :customers
+    drop_table :customers
     drop_table :types
     drop_table :models
 
