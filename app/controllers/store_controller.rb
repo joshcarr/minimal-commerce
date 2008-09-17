@@ -1,5 +1,9 @@
 class StoreController < ApplicationController
   
+  include MinimalCart
+  minimal_cart
+  
+
   def index
     # list all products
     @products = McProduct.paginate :all,
